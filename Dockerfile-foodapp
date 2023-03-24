@@ -1,8 +1,8 @@
 FROM tomcat:8.0
 
-MAINTAINER saikrishna.ura@gmail.com
+MAINTAINER YaswanthKatamraj
 
-COPY ./food-app /usr/local/tomcat/webapps/
+COPY . /usr/local/tomcat/webapps/
 
 COPY ./tomcat-users.xml /usr/local/tomcat/conf/tomcat-users.xml
 
