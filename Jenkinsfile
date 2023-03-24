@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-              git 'https://github.com/saiurakrishna/assignment-1.git'
+              git 'https://github.com/yaswanthkatamraj/Assignment-1.git'
               }
         }
         stage('docker build') {
@@ -18,16 +18,16 @@ pipeline {
         }
         stage('Login to dockerhub') {
           steps {
-              withCredentials([usernamePassword(credentialsId: 'dockerhub_creds', passwordVariable: 'dockerhub_password', usernameVariable: 'dockerhub_username')]) {
+              withCredentials([usernamePassword(credentialsId: 'DockerHub_credentials', passwordVariable: 'Password', usernameVariable: 'Username')]) {
                   
-            sh 'docker login -u $dockerhub_username -p $dockerhub_password'
+            sh 'docker login -u $Username -p $Password'
             }
           }
           }
         stage('Pushing Image to Dockerhub') {
             steps {
-                sh 'docker tag foodapp:v1 saikrishna21/foodapp-tomact:v1'
-                sh 'docker push saikrishna21/foodapp-tomact:v1'
+                sh 'docker tag foodapp:v1 yaswanthkatamraj/foodapp-tomact:v1'
+                sh 'docker push yaswanthkatamraj/foodapp-tomact:v1'
             }
         }
       
